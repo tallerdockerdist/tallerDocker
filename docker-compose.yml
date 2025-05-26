@@ -1,0 +1,26 @@
+#version: '3.8'
+
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestion_aulas
+      MYSQL_USER: gestor
+      MYSQL_PASSWORD: Passgestor1!
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    image: nataliagomez1/taller-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  frontend:
+    image: nataliagomez1/taller-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
