@@ -12,14 +12,14 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   backend:
-    image: nataliagomez1/taller-backend
+    image: tallerdockerdist/taller-backend
     ports:
       - "3000:3000"
     depends_on:
       - db
 
   frontend:
-    image: nataliagomez1/taller-frontend
+    image: tallerdockerdist/taller-frontend
     ports:
       - "8080:80"
     depends_on:
