@@ -7,20 +7,20 @@
 </head>
 <body>
   <div class="container">
-    <h1>📚 Sistema de Gestión de Aulas</h1>
+    <h1>Sistema de Gestión de Aulas DTIC'S</h1>
 
     <section id="sala-uso">
-      <h2>🏫 Sala más usada</h2>
+      <h2>Sala más usada</h2>
       <p id="sala-mas-usada">Cargando...</p>
     </section>
 
     <section>
-      <button onclick="mostrarReporte('semanal')">📅 Reportes semanales</button>
-      <button onclick="mostrarReporte('mensual')">🗓️ Reportes mensuales</button>
-      <button onclick="mostrarReporte('ranking')">🏆 Ranking de estudiantes</button>
-      <button onclick="mostrarFormularioPrestamo()">➕ Registrar préstamo</button>
-      <button onclick="mostrarFormularioEstudiante()">👤 Registrar estudiante</button>
-      <button onclick="mostrarEstudiantes()">👥 Ver estudiantes registrados</button>
+      <button onclick="mostrarReporte('semanal')">Reportes semanales</button>
+      <button onclick="mostrarReporte('mensual')">Reportes mensuales</button>
+      <button onclick="mostrarReporte('ranking')">Ranking de estudiantes</button>
+      <button onclick="mostrarFormularioPrestamo()">Registrar préstamo</button>
+      <button onclick="mostrarFormularioEstudiante()">Registrar estudiante</button>
+      <button onclick="mostrarEstudiantes()">Ver estudiantes registrados</button>
 
 
     </section>
@@ -31,7 +31,7 @@
     </section>
 
     <section id="formulario-prestamo" style="display: none;">
-      <h2>📋 Registrar nuevo préstamo</h2>
+      <h2>Registrar nuevo préstamo</h2>
       <p>Las salas se prestan durante 2 horas</p>
       <form id="form-prestamo">
         <label>ID estudiante: <input type="number" id="estudiante-id" required /></label><br />
@@ -44,7 +44,7 @@
       <p id="mensaje-prestamo"></p>
     </section>
     <section id="formulario-estudiante" style="display: none;">
-      <h2>👤 Registrar nuevo estudiante</h2>
+      <h2>Registrar nuevo estudiante</h2>
       <form id="form-estudiante">
         <label>Nombre completo:
           <input type="text" id="nombre-estudiante" required />
@@ -54,7 +54,7 @@
       <p id="mensaje-estudiante"></p>
     </section>
     <section id="lista-estudiantes" style="display: none;">
-      <h2>👥 Estudiantes registrados</h2>
+      <h2>Estudiantes registrados</h2>
       <ul id="estudiantes-lista"></ul>
     </section>
     

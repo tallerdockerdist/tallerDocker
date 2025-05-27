@@ -18,13 +18,13 @@ function mostrarReporte(tipo) {
 
   if (tipo === 'semanal') {
     url = `${API_BASE_URL}/reporte-semanal`;
-    titulo = '📅 Reporte Semanal de Préstamos';
+    titulo = 'Reporte Semanal de Préstamos';
   } else if (tipo === 'mensual') {
     url = `${API_BASE_URL}/reporte-mensual`;
-    titulo = '🗓️ Reporte Mensual de Préstamos';
+    titulo = 'Reporte Mensual de Préstamos';
   } else if (tipo === 'ranking') {
     url = `${API_BASE_URL}/ranking-estudiantes`;
-    titulo = '🏆 Ranking de Estudiantes por Uso';
+    titulo = 'Ranking de Estudiantes por Uso';
   }
 
   fetch(url)
@@ -57,7 +57,6 @@ function mostrarFormularioPrestamo() {
   document.getElementById('reporte-lista').innerHTML = '';
   document.getElementById('reporte-titulo').textContent = '';
 
-  // Cargar salas
   fetch(`${API_BASE_URL}/salas`)
     .then(res => res.json())
     .then(data => {
@@ -81,7 +80,6 @@ document.getElementById('form-prestamo').addEventListener('submit', async (e) =>
   const fecha = document.getElementById('fecha').value;
 
   try {
-    // 1. Validar si el estudiante existe
     const resEst = await fetch(`${API_BASE_URL}/estudiantes`);
     const estudiantes = await resEst.json();
     const existe = estudiantes.some(e => e.id == estudiante_id);
@@ -91,7 +89,6 @@ document.getElementById('form-prestamo').addEventListener('submit', async (e) =>
       return;
     }
 
-    // 2. Intentar registrar el préstamo
     const res = await fetch(`${API_BASE_URL}/nuevo-prestamo`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -100,21 +97,19 @@ document.getElementById('form-prestamo').addEventListener('submit', async (e) =>
 
     const contentType = res.headers.get('content-type');
 
-    // 3. Parsear JSON solo si la respuesta tiene formato JSON
     const data = contentType && contentType.includes('application/json') ? await res.json() : {};
 
     if (!res.ok) {
       const mensaje = data?.error || `Error al registrar el préstamo (código ${res.status})`;
-      alert(`⛔ ${mensaje}`);
+      alert(`${mensaje}`);
       return;
     }
 
-    // 4. Todo OK
     document.getElementById('mensaje-prestamo').textContent = data.message || 'Registrado exitosamente';
-    alert('✅ Préstamo registrado correctamente');
+    alert('Préstamo registrado correctamente');
 
   } catch (err) {
-    alert('❌ Error de red o del servidor');
+    alert('Error de red o del servidor');
     console.error(err);
   }
 });
